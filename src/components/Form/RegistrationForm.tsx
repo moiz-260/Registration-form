@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { formSchema } from "@/validations/formSchema";
@@ -25,6 +25,8 @@ const defaultFormValues: FormData = {
 };
 
 export default function Form() {
+  const [showSuccess, setShowSuccess] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -60,7 +62,13 @@ export default function Form() {
 
   const onSubmit = (data: FormData) => {
     console.log("Form Submitted:", data);
+    setShowSuccess(true);
     clearFormData(); // Clear storage after successful submission
+    reset(defaultFormValues); // Reset form
+  };
+
+  const closeSuccessMessage = () => {
+    setShowSuccess(false);
   };
 
   const genderOptions = [
@@ -70,102 +78,194 @@ export default function Form() {
   ];
 
   return (
-    <div className="form-container">
-      <form onSubmit={handleSubmit(onSubmit)} className="form">
-        <h1>Details</h1>
+    <>
+      <div className="modern-form-wrapper">
+        <div className="modern-form-card">
+          <h1 className="modern-form-title">Registration Form</h1>
 
-        <FormInput
-          name="fullName"
-          register={register}
-          error={errors.fullName}
-          placeholder="Full Name"
-        />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            {/* Personal Information Section */}
+            <div className="modern-section-header">
+              <span className="modern-section-badge">1</span>
+              Personal Information
+            </div>
 
-        <FormInput
-          name="email"
-          register={register}
-          error={errors.email}
-          placeholder="Email"
-        />
+            <div className="modern-form-grid">
+              <div className="modern-input-wrapper">
+                <FormInput
+                  name="fullName"
+                  register={register}
+                  error={errors.fullName}
+                  placeholder="Full Name"
+                  className="modern-input"
+                />
+              </div>
 
-        <FormInput
-          name="phone"
-          register={register}
-          error={errors.phone}
-          placeholder="Phone"
-        />
+              <div className="modern-input-wrapper">
+                <FormInput
+                  name="email"
+                  register={register}
+                  error={errors.email}
+                  placeholder="Email"
+                  className="modern-input"
+                />
+              </div>
 
-        <FormInput
-          name="dateofbirth"
-          register={register}
-          error={errors.dateofbirth}
-          type="date"
-        />
+              <div className="modern-input-wrapper">
+                <FormInput
+                  name="phone"
+                  register={register}
+                  error={errors.phone}
+                  placeholder="Phone"
+                  className="modern-input"
+                />
+              </div>
 
-        <FormInput
-          name="age"
-          register={register}
-          error={errors.age}
-          placeholder="Age"
-          type="number"
-        />
+              <div className="modern-input-wrapper">
+                <FormInput
+                  name="dateofbirth"
+                  register={register}
+                  error={errors.dateofbirth}
+                  type="date"
+                  className="modern-input"
+                />
+              </div>
 
-        <FormSelect
-          name="gender"
-          register={register}
-          error={errors.gender}
-          options={genderOptions}
-          placeholder="Select gender"
-        />
+              <div className="modern-input-wrapper">
+                <FormInput
+                  name="age"
+                  register={register}
+                  error={errors.age}
+                  placeholder="Age"
+                  type="number"
+                  className="modern-input"
+                />
+              </div>
 
-        <FormInput
-          name="country"
-          register={register}
-          error={errors.country}
-          placeholder="Country"
-        />
+              <div className="modern-input-wrapper">
+                <FormSelect
+                  name="gender"
+                  register={register}
+                  error={errors.gender}
+                  options={genderOptions}
+                  placeholder="Select gender"
+                  className="modern-select"
+                />
+              </div>
+            </div>
 
-        <FormInput
-          name="city"
-          register={register}
-          error={errors.city}
-          placeholder="City"
-        />
+            {/* Location Section */}
+            <div className="modern-section-header">
+              <span className="modern-section-badge">2</span>
+              Location Details
+            </div>
 
-        <FormInput
-          name="address"
-          register={register}
-          error={errors.address}
-          placeholder="Address"
-        />
+            <div className="modern-form-grid">
+              <div className="modern-input-wrapper">
+                <FormInput
+                  name="country"
+                  register={register}
+                  error={errors.country}
+                  placeholder="Country"
+                  className="modern-input"
+                />
+              </div>
 
-        <FormInput
-          name="password"
-          register={register}
-          error={errors.password}
-          placeholder="Password"
-          type="password"
-        />
+              <div className="modern-input-wrapper">
+                <FormInput
+                  name="city"
+                  register={register}
+                  error={errors.city}
+                  placeholder="City"
+                  className="modern-input"
+                />
+              </div>
+            </div>
 
-        <FormInput
-          name="confirmPassword"
-          register={register}
-          error={errors.confirmPassword}
-          placeholder="Confirm Password"
-          type="password"
-        />
+            <div className="modern-form-grid full-width">
+              <div className="modern-input-wrapper">
+                <FormInput
+                  name="address"
+                  register={register}
+                  error={errors.address}
+                  placeholder="Address"
+                  className="modern-input"
+                />
+              </div>
+            </div>
 
-        <FormCheckbox
-          name="termsAccepted"
-          register={register}
-          error={errors.termsAccepted}
-          label="I accept the terms and conditions"
-        />
+            {/* Security Section */}
+            <div className="modern-section-header">
+              <span className="modern-section-badge">3</span>
+              Security
+            </div>
 
-        <button className="submit-btn" type="submit" disabled={!isValid}>
-          Submit
-        </button>
-      </form>
-    </div>
+            <div className="modern-form-grid">
+              <div className="modern-input-wrapper">
+                <FormInput
+                  name="password"
+                  register={register}
+                  error={errors.password}
+                  placeholder="Password"
+                  type="password"
+                  className="modern-input"
+                />
+              </div>
+
+              <div className="modern-input-wrapper">
+                <FormInput
+                  name="confirmPassword"
+                  register={register}
+                  error={errors.confirmPassword}
+                  placeholder="Confirm Password"
+                  type="password"
+                  className="modern-input"
+                />
+              </div>
+            </div>
+
+            {/* Terms and Conditions */}
+            <div className="modern-terms">
+              <FormCheckbox
+                name="termsAccepted"
+                register={register}
+                error={errors.termsAccepted}
+                label="I accept the terms and conditions"
+                className="modern-checkbox"
+              />
+            </div>
+
+            <button
+              className="modern-submit-btn"
+              type="submit"
+              disabled={!isValid}
+            >
+              Create Account
+            </button>
+          </form>
+        </div>
+      </div>
+
+      {/* Success Message Modal */}
+      {showSuccess && (
+        <>
+          <div className="success-overlay" onClick={closeSuccessMessage}></div>
+          <div className="success-message">
+            <div className="success-icon">
+              <svg viewBox="0 0 52 52">
+                <path className="success-checkmark" d="M14 27l8 8 16-16" />
+              </svg>
+            </div>
+            <h2 className="success-title">Registration Successful!</h2>
+            <p className="success-description">
+              Your account has been created successfully. Welcome aboard!
+            </p>
+            <button className="success-close-btn" onClick={closeSuccessMessage}>
+              Got it!
+            </button>
+          </div>
+        </>
+      )}
+    </>
   );
 }
