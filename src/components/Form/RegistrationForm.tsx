@@ -38,21 +38,18 @@ export default function Form() {
     mode: "onChange",
   });
 
-  // Use localStorage with useState
   const [savedFormData, setSavedFormData, clearFormData] =
     useLocalStorage<FormData>({
       key: "formData",
       initialValue: defaultFormValues,
     });
 
-  // Load saved data on mount
   useEffect(() => {
     if (savedFormData && Object.keys(savedFormData).length > 0) {
       reset(savedFormData);
     }
   }, []);
 
-  // Save form data on change
   useEffect(() => {
     const subscription = watch((value) => {
       setSavedFormData(value as FormData);
@@ -63,8 +60,8 @@ export default function Form() {
   const onSubmit = (data: FormData) => {
     console.log("Form Submitted:", data);
     setShowSuccess(true);
-    clearFormData(); // Clear storage after successful submission
-    reset(defaultFormValues); // Reset form
+    clearFormData();
+    reset(defaultFormValues);
   };
 
   const closeSuccessMessage = () => {
@@ -84,7 +81,6 @@ export default function Form() {
           <h1 className="modern-form-title">Registration Form</h1>
 
           <form onSubmit={handleSubmit(onSubmit)}>
-            {/* Personal Information Section */}
             <div className="modern-section-header">
               <span className="modern-section-badge">1</span>
               Personal Information
@@ -128,6 +124,7 @@ export default function Form() {
                   error={errors.dateofbirth}
                   type="date"
                   className="modern-input"
+                  placeholder="DateOfBirth"
                 />
               </div>
 

@@ -14,15 +14,25 @@ export function FormCheckbox({
   register,
   error,
   label,
-  className = "terms-row",
+  className = "",
 }: FormCheckboxProps) {
   return (
-    <>
-      <label className={className}>
-        <input className="form-checkbox" type="checkbox" {...register(name)} />
-        <span>{label}</span>
+    <div className="flex flex-col gap-1">
+      <label
+        className={`flex items-center gap-3 
+        0  border-none text-lg font-medium text-slate-700
+        cursor-pointer w-fit ${className}`}
+      >
+        <input
+          type="checkbox"
+          {...register(name)}
+          className="h-5 w-5 rounded-md border-gray-400 text-blue-600 cursor-pointer
+          focus:ring-blue-500"
+        />
+        <span className="text-sm">{label}</span>
       </label>
-      {error && <p className="error">{error.message}</p>}
-    </>
+
+      {error && <p className="text-sm text-red-500 ml-1">{error.message}</p>}
+    </div>
   );
 }

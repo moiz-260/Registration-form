@@ -272,11 +272,10 @@ body::after {
 
 .modern-input:focus,
 .modern-select:focus {
-  border-color: var(--primary);
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12),
     0 8px 24px rgba(59, 130, 246, 0.15);
-  transform: translateY(-2px);
+  transform: translateY(-9px);
   outline: none;
 }
 
@@ -286,20 +285,20 @@ body::after {
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 3.75rem center;
+  background-position: right 0.75rem center;
   padding-right: 2.5rem;
 }
 
 /* Checkbox */
 .modern-checkbox {
-  font-size: larger;
-  font-weight: 400;
-  width: 100%;
+  width: 1.25rem;
   height: 1.25rem;
   border-radius: 6px;
+  border: 2px solid var(--primary-light);
   cursor: pointer;
   accent-color: var(--primary);
-  margin-bottom: 1rem;
+  flex-shrink: 0;
+  margin: 0;
 }
 
 .modern-checkbox:checked {
@@ -319,7 +318,7 @@ body::after {
   align-items: flex-start;
   gap: 0.75rem;
   margin: 2rem 0 1.5rem 0;
-  padding: 1.5rem;
+  padding: 1.25rem;
   background: linear-gradient(
     135deg,
     rgba(59, 130, 246, 0.05),
@@ -331,13 +330,13 @@ body::after {
   animation-delay: 0.35s;
 }
 
-/* .modern-terms label {
+.modern-terms-label {
   user-select: none;
   color: #475569;
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: 1.6;
   cursor: pointer;
-} */
+}
 
 .modern-terms-label a {
   color: var(--primary);
