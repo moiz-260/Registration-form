@@ -44,11 +44,7 @@ export const formSchema = yup.object().shape({
     .trim()
     .required("Address required")
     .min(5, "Address is too short")
-    .matches(/[A-Za-z]/, "Address must contain at least one letter")
-    .matches(
-      /^[A-Za-z0-9\s,'-]+$/,
-      "Only letters, numbers, spaces, commas, apostrophes and dashes allowed"
-    ),
+    .matches(/[A-Za-z]/, "Address must contain at least one letter"),
 
   password: yup
     .string()
