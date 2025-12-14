@@ -1,5 +1,5 @@
 import type { UseFormRegister, FieldErrors } from "react-hook-form";
-import { FormInput } from "@/components/Form/FormInput";
+import { FormInput } from "@/components/Form_Input/FormInput";
 import type { FormData } from "@/types/form.type";
 
 interface SecurityProps {

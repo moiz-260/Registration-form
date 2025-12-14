@@ -1,5 +1,5 @@
 import type { UseFormRegister, FieldErrors } from "react-hook-form";
-import { FormCheckbox } from "@/components/Form/FormCheckbox";
+import { FormCheckbox } from "@/components/Checkbox/FormCheckbox";
 import type { FormData } from "@/types/form.type";
 
 interface TermsConditionsProps {

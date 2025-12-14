@@ -1,6 +1,6 @@
 import type { UseFormRegister, FieldErrors } from "react-hook-form";
-import { FormInput } from "@/components/Form/FormInput";
-import { FormSelect } from "@/components/Form/FormSelect";
+import { FormInput } from "@/components/Form_Input/FormInput";
+import { FormSelect } from "@/components/Form_Select/FormSelect";
 import type { FormData } from "@/types/form.type";
 
 interface PersonalInformationProps {
