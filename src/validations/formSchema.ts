@@ -16,16 +16,9 @@ export const formSchema = yup.object().shape({
     .min(11, "Min 11 numbers")
     .max(11, "Max 11 numbers"),
 
-  age: yup
-    .number()
-    .typeError("Age must be a number")
-    .min(1, "Age must be at least 1")
-    .max(120, "Age must be at most 120")
-    .required("Age is required"),
-
   dateofbirth: yup.string().required("Date of Birth is required"),
 
-  gender: yup.string().trim().required("Gender required"),
+  gender: yup.string().trim(),
 
   country: yup
     .string()
@@ -43,8 +36,7 @@ export const formSchema = yup.object().shape({
     .string()
     .trim()
     .required("Address required")
-    .min(5, "Address is too short")
-    .matches(/[A-Za-z]/, "Address must contain at least one letter"),
+    .min(5, "Address is too short"),
 
   password: yup
     .string()

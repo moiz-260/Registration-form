@@ -35,8 +35,8 @@ export default function Form() {
     reset,
     watch,
   } = useForm<FormData>({
-    resolver: yupResolver(formSchema) as any,
     mode: "onChange",
+    resolver: yupResolver(formSchema) as any,
   });
 
   const [savedFormData, setSavedFormData, clearFormData] =
@@ -89,7 +89,7 @@ export default function Form() {
               type="submit"
               disabled={!isValid}
             >
-              Create Account
+              Submit
             </button>
           </form>
         </div>
